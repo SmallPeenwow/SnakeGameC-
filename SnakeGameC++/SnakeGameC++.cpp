@@ -97,6 +97,7 @@ void Input()
             break;
         case 's':
             dir = DOWN;
+            break;
         case 'x':
             gameOver = true;
             break;
@@ -122,6 +123,11 @@ void Logic()
         break;
     default:
         break;
+    }
+
+    if (x > width || x < 0 || y > height || y < 0) 
+    {
+        gameOver = true;
     }
 }
 
