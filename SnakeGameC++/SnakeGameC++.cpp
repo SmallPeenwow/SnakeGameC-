@@ -1,9 +1,14 @@
 #include <iostream>
+#include <conio.h>
+
 using namespace std;
+
 bool gameOver;
 const int width = 20;
 const int height = 20;
 int x, y, fruitX, fruitY, score;
+int tailX[100], tailY[100];
+int nTail;
 
 enum eDirection
 {
@@ -45,7 +50,18 @@ void Draw()
                 cout << "#";
             }
 
-            cout << " ";
+            if (i == y && j == x)
+            {
+                cout << "O";
+            }
+            else if (i == fruitY && j == fruitX)
+            {
+                cout << "F";
+            }
+            else 
+            {
+                cout << " ";
+            }
 
             if (j == width - 1)
             {
@@ -60,16 +76,53 @@ void Draw()
         cout << "#";
     }
     cout << endl;
+
+    cout << "Score:" << score << endl;
 }
 
 void Input()
 {
-
+    if (_kbhit())
+    {
+        switch (_getch())
+        {
+        case 'a':
+            dir = LEFT;
+            break;
+        case 'd':
+            dir = RIGHT;
+            break;
+        case 'w':
+            dir = UP;
+            break;
+        case 's':
+            dir = DOWN;
+        case 'x':
+            gameOver = true;
+            break;
+        }
+    }
 }
 
 void Logic()
 {
-
+    switch (dir)    
+    {
+    case LEFT:
+        x--;
+        break;
+    case RIGHT:
+        x++;
+        break;
+    case UP:
+        y--;
+        break;
+    case DOWN:
+        y++;
+        break;
+    default:
+        break;
+    }
 }
 
 int main()
