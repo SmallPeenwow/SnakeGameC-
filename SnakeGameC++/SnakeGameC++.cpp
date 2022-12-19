@@ -60,7 +60,22 @@ void Draw()
             }
             else 
             {
-                cout << " ";
+                 bool print = false;
+
+                for (int k = 0; k < nTail; k++)
+                {
+
+                    if (tailX[k] == j && tailY[k] == i)
+                    {
+                        cout << "o";
+                        print = true;
+                    }
+                }                
+                
+                if (!print)
+                {
+                    cout << " ";
+                }
             }
 
             if (j == width - 1)
